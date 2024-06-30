@@ -34,6 +34,7 @@ resource "aws_security_group_rule" "test-ingress" {
   to_port = var.ingress_to_port
   protocol = var.ingress_protocol
   type = var.ingress_type
+  cidr_blocks = var.cidr_blocks
 }
 
 resource "aws_security_group_rule" "egress" {
@@ -42,4 +43,5 @@ resource "aws_security_group_rule" "egress" {
   to_port = var.egress_to_port
   protocol = var.egress_protocol
   type = var.egress_type
+  cidr_blocks = var.cidr_blocks
 }
