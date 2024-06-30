@@ -67,5 +67,5 @@ variable "egress_type" {
 variable "cidr_blocks" {
     type = list(string)
     description = "cidr_blocks"
-    default = ""
+    default = []
 }
