@@ -9,7 +9,6 @@ resource "aws_vpc" "test-vpc" {
 
 resource "aws_subnet" "test-subnet" {
     vpc_id = aws_vpc.test-vpc.id
-    depends_on = [ aws_vpc.test-vpc.id ]
     availability_zone = var.availability_zone
     cidr_block = var.subnet_cidr_block
      tags = {
@@ -22,7 +21,6 @@ resource "aws_subnet" "test-subnet" {
 
 resource "aws_security_group" "test-sg" {
   vpc_id = aws_vpc.test-vpc.id
-  depends_on = [ aws_vpc.test-vpc.id ]
    tags = {
     "Env"   = "Testing"
     "Name"  = "test-sg"
@@ -32,7 +30,6 @@ resource "aws_security_group" "test-sg" {
 
 resource "aws_security_group_rule" "test-ingress" {
   security_group_id = aws_security_group.test-sg.id
-  depends_on = [ aws_security_group.test-sg.id ]
   from_port = var.ingress_from_port
   to_port = var.ingress_to_port
   protocol = var.ingress_protocol
@@ -41,7 +38,6 @@ resource "aws_security_group_rule" "test-ingress" {
 
 resource "aws_security_group_rule" "egress" {
   security_group_id = aws_security_group.test-sg.id
-  depends_on = [ aws_security_group.test-sg.id ]
   from_port = var.egress_from_port
   to_port = var.egress_to_port
   protocol = var.egress_protocol
