@@ -1,15 +1,11 @@
 output "cidr_block" {
-    value = var.cidr_block
-}
-
-output "availability_zone" {
-    value = var.availability_zone
+    value = aws_vpc.main.cidr_block
 }
 
 output "arn" {
-    value = aws_vpc.test-vpc.arn
+    value = aws_vpc.main.arn
 }
 
-output "vpc_id" {
-    value = aws_vpc.test-vpc.id
+output "id" {
+    value = aws_vpc.main.id
 }
